@@ -50,9 +50,10 @@ format-charging-prefix-foreground = ${colors.primary}
 format-charging = <label-charging>
 label-charging  = %percentage%%
 
+format-full-prefix = " "
 format-full = <label-full>
-label-full  = " "
-label-full-foreground = ${colors.primary}
+label-full  = %percentage%%
+format-full-prefix-foreground = ${colors.primary}
 
 format-charging-prefix-margin-right = 1
 
