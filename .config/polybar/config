@@ -1,0 +1,107 @@
+;
+; ───────────────────────────────────────────────────────────────────
+;   :::::: P O L Y B A R : :  :   :    :     :        :          :
+; ────────────────────────────────────────────────────────────────
+;
+
+
+;
+; ─── COLORS ─────────────────────────────────────────────────────────────────────
+;
+
+[colors]
+background     = ${xrdb:color0:#222}
+background-alt = #444
+foreground     = ${xrdb:foreground:#222}
+foreground-alt = #555
+primary        = ${xrdb:color4:#222}
+secondary      = #e60053
+alert          = #bd2c40
+
+;
+; ─── BARS ───────────────────────────────────────────────────────────────────────
+;
+
+[bar/eDP-1]
+monitor        = eDP-1
+dpi            = 192
+include-file   = ~/.config/polybar/bars
+background     = ${colors.background}
+foreground     = ${colors.foreground}
+modules-left   = bspwm
+modules-center = 
+modules-right  = battery volume time 
+scroll-up      = bspwm-desknext
+scroll-down    = bspwm-deskprev
+
+;
+; ─── MODULES ────────────────────────────────────────────────────────────────────
+;
+
+[module/battery]
+type          = internal/battery
+full-at       = 97
+battery       = BAT1
+adapter       = ADP1
+poll-interval = 5
+time-format   = %H:%M
+format-charging-prefix = " "
+format-charging-prefix-foreground = ${colors.primary}
+format-charging = <label-charging>
+label-charging  = %percentage%%
+
+format-full = <label-full>
+label-full  = " "
+label-full-foreground = ${colors.primary}
+
+format-charging-prefix-margin-right = 1
+
+format-discharging = <ramp-capacity><label-discharging>
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-foreground = ${colors.primary}
+bar-capacity-width = 10
+
+[module/time]
+type                     = internal/date
+interval                 = 15
+time                     = %H:%M
+label                    = %time%
+format                   = <label>
+format-prefix            = " "
+format-prefix-foreground = ${colors.primary}
+format-padding           = 1
+
+[module/volume]
+type          = internal/pulseaudio
+format-volume = <ramp-volume><label-volume>
+format-muted  = " "
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-foreground  = ${colors.primary}
+format-muted-foreground = ${colors.primary}
+
+[module/bspwm]
+type            = internal/bspwm
+pin-workspaces  = true
+strip-wsnumbers = false
+index-sort      = true
+enable-click    = true
+enable-scroll   = true
+wrapping-scroll = false
+reverse-scroll  = false
+fuzzy-match     = true
+label-focused-foreground = ${colors.primary}
+
+label-focused           = " "
+label-focused-underline = ${colors.primary}
+label-occupied          = " "
+label-empty             = " "
+
+;label-mode-padding      = 1
+;label-urgent-padding    = 1
+;label-unfocused-padding = 1
+;label-focused-padding   = 1
+;label-visible-padding   = 1
